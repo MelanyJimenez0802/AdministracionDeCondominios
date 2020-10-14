@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "5731420747",
+    "firebase_url": "https://administracion-de-condom-d43c0.firebaseio.com",
+    "project_id": "administracion-de-condom-d43c0",
+    "storage_bucket": "administracion-de-condom-d43c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5731420747:android:f31e3c2fddca262306dbce",
+        "android_client_info": {
+          "package_name": "com.example.administracindecondominios"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "5731420747-ep1hcs2m5phunhf4ckuiknme42enl6dd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAniUtl5-Mg3kbQr2wG0C_veeIQ6PDxmFM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "5731420747-ep1hcs2m5phunhf4ckuiknme42enl6dd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

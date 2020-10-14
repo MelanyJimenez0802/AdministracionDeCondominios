@@ -117,7 +117,7 @@
         android:layout_marginEnd="-10dp"
         android:layout_marginRight="-10dp"
         android:layout_marginBottom="-75dp"
-        android:layaout_gravity="center"
+        android:gravity="center"
         android:text="Configuración"
         android:textSize="20sp"
         android:textStyle="bold" />
