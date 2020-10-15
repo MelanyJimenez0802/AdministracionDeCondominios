@@ -13,7 +13,7 @@
         android:id="@+id/profile_pic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|fill|left"
+        android:layout_gravity="start"
         android:background="@drawable/uno" />
 
     <com.facebook.login.widget.LoginButton
