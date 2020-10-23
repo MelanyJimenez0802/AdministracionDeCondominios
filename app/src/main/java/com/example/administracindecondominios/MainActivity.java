@@ -4,12 +4,16 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.ViewTarget;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
@@ -65,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
@@ -108,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
                     Glide.with(MainActivity.this).load(image_url).into(circleImageView);
 
 
+
                 } catch (JSONException e){
 
                 }
@@ -119,5 +125,12 @@ public class MainActivity extends AppCompatActivity {
         parameters.putString("fields", "first_name, last_name, email, id");
         request.setParameters(parameters);
         request.executeAsync();
+    }
+
+    //Pasar del botón aceptar a la siguiente pantalla
+    public void botonPrueba(View view){
+        Intent siguiente = new Intent(this, MainActivity_spinner.class); //Pasar a la sigueinte activity
+        startActivity(siguiente);
+
     }
 }

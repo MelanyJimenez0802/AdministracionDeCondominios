@@ -1,8 +1,18 @@
 <resources>
-    <string name="app_name">AdministraciónDeCondominios</string>
+    <string name="app_name">Administración De Condominios</string>
     <string name="facebook_app_id">350839409472214</string>
     <string name="fb_login_protocol_scheme">fb350839409472214</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="spinner">Spinner</string>
+    <string name="button">Aceptar</string>
+    <string name="txt_cuenta">Estado de Cuenta</string>
+    <string name="txt_salon">Reservar Salón</string>
+    <string name="txt_avisos">Avisos</string>
+    <string name="txt_configuracion">Configuración</string>
+
+    <string name="txt_identificacion">Identificación</string>
+    <string name="txt_nombre">Nombre</string>
+    <string name="txt_telefono">Número de teléfono</string>
+    <string name="boton">Insertar</string>
 
 </resources>
