@@ -1,7 +1,11 @@
 package com.example.administracindecondominios;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelStore;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -42,7 +46,6 @@ public class MainActivity_Configuracion extends AppCompatActivity implements Vie
         switch (view.getId()){
             //Obtener los campos de texto
             case R.id.btn_insertar: String texto = et_identificacion1.getText().toString().trim() + et_nombre1.getText().toString().trim() + et_telefono1.getText().toString().trim();
-            et_identificacion1.setText("  ");
             lista1.add(texto);
 
             //Para que se borren los datos
@@ -53,10 +56,28 @@ public class MainActivity_Configuracion extends AppCompatActivity implements Vie
             //Agregar a la lista
             adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lista1); //Agregar a la lista
             lv.setAdapter(adapter1);
-            lv.onSaveInstanceState();
 
 
+                AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "BD", null, 1);
+                SQLiteDatabase BD = admin.getWritableDatabase();
 
+                Cursor consulta =BD.rawQuery("select * from puntaje where identificacion = (select max(identificacion) from puntaje)", null);
+                if(consulta.moveToFirst()){
+                    String temp_identificacion = consulta.getString(0);
+                    String temp_nombre = consulta.getString(1);
+                    String temp_telefono = consulta.getString(2);
+                    //lv.setAdapter(temp_identificacion + "  " + temp_nombre + "  " + temp_telefono);
+                    BD.close();
+                }else{
+                    BD.close();
+
+                }
         }
+
+
     }
+
+
+
+
 }
