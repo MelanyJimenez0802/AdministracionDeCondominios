@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.ViewTarget;
+import com.example.administracindecondominios.restclient.APIInterface;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
@@ -37,11 +38,13 @@ public class MainActivity extends AppCompatActivity {
     private CircleImageView circleImageView;
     private TextView txtName, txtEmail;
     private CallbackManager callbackManager;
+    private APIInterface apiInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         loginButton = findViewById(R.id.login_button);
         txtName = findViewById(R.id.profile_name);
@@ -54,7 +57,9 @@ public class MainActivity extends AppCompatActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-
+                
+                Intent siguiente = new Intent(getApplicationContext(), MainActivity_spinner.class); //Pasar a la sigueinte activity
+                startActivity(siguiente);
             }
 
             @Override
