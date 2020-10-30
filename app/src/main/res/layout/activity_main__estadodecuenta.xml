@@ -6,15 +6,44 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity_Estadodecuenta">
 
-    <TextView
-        android:id="@+id/textView5"
+    <EditText
+        android:id="@+id/txt_fechaInicial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="248dp"
-        android:text="@string/txt_cuenta"
-        android:textSize="30sp"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="68dp"
+        android:ems="10"
+        android:hint="@string/txt_fechaInicial"
+        android:inputType="number|text"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txt_fechaFinal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="@string/txt_fechaFinal"
+        android:inputType="number|text"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_fechaInicial" />
+
+    <Button
+        android:id="@+id/btn_consultar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="124dp"
+        android:layout_marginLeft="124dp"
+        android:layout_marginTop="48dp"
+        android:onClick="Consultar"
+        android:text="@string/btn_consultar"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_fechaFinal" />
 </androidx.constraintlayout.widget.ConstraintLayout>

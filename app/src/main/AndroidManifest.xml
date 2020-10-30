@@ -12,6 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity_MovimientosCuenta"></activity>
+        <activity android:name=".MainActivity_ReservasGuardadas" />
+        <activity android:name=".MainActivity_CalendarioReserva" />
         <activity android:name=".MainActivity_spinner" />
         <activity android:name=".MainActivity2_Menu" />
         <activity android:name=".MainActivity">
@@ -42,42 +45,35 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"
-            tools:replace="android:value" />
-
-        //Poner la linea de navegación para devolverse al menú
+            tools:replace="android:value" /> <!-- //Poner la linea de navegación para devolverse al menú -->
         <activity
             android:name=".MainActivity_Reservadesalon"
             android:parentActivityName=".MainActivity2_Menu">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.administracindecondominios.MainActivity2_Menu" />
-        </activity>
-
-        //Poner la linea de navegación para devolverse al menú
+        </activity> <!-- //Poner la linea de navegación para devolverse al menú -->
         <activity
             android:name=".MainActivity_Estadodecuenta"
             android:parentActivityName=".MainActivity2_Menu">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.administracindecondominios.MainActivity2_Menu" />
-        </activity>
-
-        //Poner la linea de navegación para devolverse al menú
-        <activity android:name=".MainActivity_Configuracion"
+        </activity> <!-- //Poner la linea de navegación para devolverse al menú -->
+        <activity
+            android:name=".MainActivity_Configuracion"
+            android:parentActivityName=".MainActivity2_Menu">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.administracindecondominios.MainActivity2_Menu" />
+        </activity> <!-- //Poner la linea de navegación para devolverse al -->
+        <activity
+            android:name=".MainActivity_Avisos"
             android:parentActivityName=".MainActivity2_Menu">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.administracindecondominios.MainActivity2_Menu" />
         </activity>
-
-        //Poner la linea de navegación para devolverse al menú
-        <activity android:name=".MainActivity_Avisos"
-            android:parentActivityName=".MainActivity2_Menu">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.administracindecondominios.MainActivity2_Menu" />
-        </activity>
-
     </application>
 
 </manifest>

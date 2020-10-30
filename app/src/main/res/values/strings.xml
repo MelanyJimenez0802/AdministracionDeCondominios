@@ -15,4 +15,16 @@
     <string name="txt_telefono">Número de teléfono</string>
     <string name="boton">Insertar</string>
 
+
+    <string name="txt_Seleccion">Seleccione la fecha y hora</string>
+    <string name="txt_fecha">Fecha:</string>
+    <string name="txt_hora">Hora:</string>
+    <string name="btn_fecha">Fecha</string>
+    <string name="btn_hora">Hora</string>
+    <string name="btn_reserva">Reservar</string>
+
+    <string name="txt_fechaInicial">Fecha Inicial</string>
+    <string name="txt_fechaFinal">Fecha Final</string>
+    <string name="btn_consultar">Consultar</string>
+
 </resources>
