@@ -26,5 +26,8 @@
     <string name="txt_fechaInicial">Fecha Inicial</string>
     <string name="txt_fechaFinal">Fecha Final</string>
     <string name="btn_consultar">Consultar</string>
+    <string name="fecha">Fecha</string>
+    <string name="descripcion">Descripcion</string>
+    <string name="monto">Monto</string>
 
 </resources>
