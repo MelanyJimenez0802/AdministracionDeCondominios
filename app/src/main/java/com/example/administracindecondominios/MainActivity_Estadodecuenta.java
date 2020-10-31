@@ -56,7 +56,7 @@ public class MainActivity_Estadodecuenta extends AppCompatActivity implements Vi
             int filas = tableLayout.getChildCount();
 
             tableLayout.removeViews(1, filas -1);
-            for (int i=0; i<matriz1[i].length; i++) {
+            for (int i=0; i<matriz1.length; i++) {
                 Log.i("fslog", "matriz1[i].length = " + matriz1[i].length);
                 TableRow fila = new TableRow(this);
                 /*fila.setBackground(parseColor("#FDFFA5"));*/
@@ -76,7 +76,7 @@ public class MainActivity_Estadodecuenta extends AppCompatActivity implements Vi
                 Log.i("fslog", "fila added=");
             }
         }else{
-                for (int i=0; i<matriz1[i].length; i++) {
+                for (int i=0; i<matriz1.length; i++) {
                     Log.i("fslog", "matriz1[i].length = " + matriz1[i].length);
                     TableRow fila = new TableRow(this);
                     /*fila.setBackground(parseColor("#FDFFA5"));*/
