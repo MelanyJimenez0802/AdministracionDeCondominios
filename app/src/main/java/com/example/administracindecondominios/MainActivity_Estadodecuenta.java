@@ -41,11 +41,18 @@ public class MainActivity_Estadodecuenta extends AppCompatActivity implements Vi
         btn1.setOnClickListener((View.OnClickListener) this);
         tableLayout = (TableLayout)findViewById(R.id.tabla_layout);
 
+        TableRow.LayoutParams layoutFila = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+        layoutFila.setMargins(0,0,2,0);
+        TableRow.LayoutParams layoutFechas = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+        TableRow.LayoutParams layoutDescripcion = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+        TableRow.LayoutParams layoutMonto = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+
         tableLayout.setVisibility(tableLayout.INVISIBLE);
 
         matriz1 [0] = fechas;
         matriz1 [1] = descripcion;
         matriz1 [2] = monto;
+
     }
 
     public void llenarTabla(){
@@ -56,10 +63,10 @@ public class MainActivity_Estadodecuenta extends AppCompatActivity implements Vi
             int filas = tableLayout.getChildCount();
 
             tableLayout.removeViews(1, filas -1);
-            for (int i=0; i<matriz1[i].length; i++) {
+            for (int i=0; i<matriz1.length; i++) {
                 Log.i("fslog", "matriz1[i].length = " + matriz1[i].length);
                 TableRow fila = new TableRow(this);
-                /*fila.setBackground(parseColor("#FDFFA5"));*/
+                fila.setPadding(0,0,0,10);
                 Log.i("fslog", "matriz1.length=" + matriz1.length);
                 TextView tv1 = new TextView(this);
                 TextView tv2 = new TextView(this);
@@ -74,12 +81,14 @@ public class MainActivity_Estadodecuenta extends AppCompatActivity implements Vi
                 fila.addView(tv3);
                 tableLayout.addView(fila);
                 Log.i("fslog", "fila added=");
+
             }
-        }else{
-                for (int i=0; i<matriz1[i].length; i++) {
+
+        }else {
+                for (int i=0; i<matriz1.length; i++) {
                     Log.i("fslog", "matriz1[i].length = " + matriz1[i].length);
                     TableRow fila = new TableRow(this);
-                    /*fila.setBackground(parseColor("#FDFFA5"));*/
+                    fila.setPadding(0,0,0,10);
                     Log.i("fslog", "matriz1.length=" + matriz1.length);
                     TextView tv1 = new TextView(this);
                     TextView tv2 = new TextView(this);
@@ -102,13 +111,12 @@ public class MainActivity_Estadodecuenta extends AppCompatActivity implements Vi
 
     @Override
     public void onClick(View view) {
-        tableLayout.setVisibility(tableLayout.VISIBLE);
-
         switch (view.getId()){
             case R.id.btn_consultar:
                 llenarTabla();
                 ntabla=1;
                 break;
         }
+        tableLayout.setVisibility(tableLayout.VISIBLE);
     }
 }

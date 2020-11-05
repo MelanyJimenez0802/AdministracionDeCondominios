@@ -73,6 +73,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.administracindecondominios.MainActivity2_Menu" />
         </activity>
+
+        <!--Dialogo -->
+        <activity android:name=".MainActivity_DialogoDetalles"
+            android:theme="@style/Theme.AppCompat.Light.Dialog.Alert"></activity>
+
     </application>
 
 </manifest>

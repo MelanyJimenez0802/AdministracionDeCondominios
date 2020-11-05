@@ -6,9 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,10 +20,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -29,17 +35,25 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class MainActivity_CalendarioReserva extends AppCompatActivity implements View.OnClickListener {
 
     Button btn_fecha, btn_hora, btn_reserva;
-    EditText et_fecha, et_hora;
+    EditText et_fecha;
+    EditText et_hora;
     private int dia,mes,ano,hora,minutos;
+    private TableLayout tableLayout;
 
     JSONObject reserva = new JSONObject();
     SharedPreferences preferencias;
     SharedPreferences.Editor editor;
+
+    private List<String> lista1 = new ArrayList<>();
+    private ArrayAdapter<String> adapter1;
+
 
 
     @Override
@@ -53,9 +67,12 @@ public class MainActivity_CalendarioReserva extends AppCompatActivity implements
         btn_reserva = (Button)findViewById(R.id.button_reserva);
         et_fecha = (EditText)findViewById(R.id.editTextDate);
         et_hora = (EditText)findViewById(R.id.editTextTime);
+        tableLayout = (TableLayout)findViewById(R.id.tabla_layout);
 
         btn_fecha.setOnClickListener(this);
         btn_hora.setOnClickListener(this);
+
+
         
         init();
         Intent intent =getIntent();
@@ -95,7 +112,7 @@ public class MainActivity_CalendarioReserva extends AppCompatActivity implements
         return true;
     }
 
-    @Override
+   /* @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.reserva){
@@ -107,7 +124,7 @@ public class MainActivity_CalendarioReserva extends AppCompatActivity implements
             }
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     @Override
     public void onClick(View view) {
@@ -153,15 +170,56 @@ public class MainActivity_CalendarioReserva extends AppCompatActivity implements
         }
     }
 
-
-
+    //Probar para guardar en Base de Datos
     public void Reservar(View view){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 1);
+        SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
 
         String s3 = et_fecha.getText().toString();
         String s4 = et_hora.getText().toString();
 
-        if(!s3.equals("") | !s4.equals("")){
-            try {
+        if(!s3.isEmpty() | !s4.isEmpty()){
+            ContentValues registro = new ContentValues();
+            registro.put("fecha", s3);
+            registro.put("hora", s4);
+
+            BaseDeDatos.insert("reserva", null, registro);
+            BaseDeDatos.close();
+            et_fecha.setText("");
+            et_hora.setText("");
+            Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show();
+
+           /* switch (view.getId()) {
+                //Obtener los campos de texto
+                case R.id.button_reserva:
+                    String texto = et_fecha.getText().toString().trim() + et_hora.getText().toString().trim();
+                    lista1.add(texto);
+
+                    //Para que se borren los datos
+                    et_fecha.getText().clear();
+                    et_hora.getText().clear();
+
+                    TableRow fila = new TableRow(this);
+                    fila.setPadding(0,0,0,10);
+                    Log.i("fslog", "reserva.length=" + reserva);
+                    TextView tv1 = new TextView(this);
+                    TextView tv2 = new TextView(this);
+                    TextView tv3 = new TextView(this);
+                    Log.i("fslog", "text=" + reserva);
+                    tv1.setText();
+
+
+                    //Agregar a la lista
+                    adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lista1); //Agregar a la lista
+                    reserva.setAdapter(adapter1);
+
+
+
+            }*/
+
+
+
+            /*try {
                 if(!preferencias.getString("reservar", "").equals(""))
                     reserva = new JSONObject(preferencias.getString("reserva", ""));
                 reserva.put("reservar"+reserva.length(),s3);
@@ -179,14 +237,14 @@ public class MainActivity_CalendarioReserva extends AppCompatActivity implements
             Toast.makeText(this, "La reservación ha sido exitosa", Toast.LENGTH_SHORT).show();
 
             Intent intent = new Intent(MainActivity_CalendarioReserva.this, MainActivity_ReservasGuardadas.class);
-            startActivity(intent);
+            startActivity(intent);*/
 
         }else {
             Toast.makeText(this, "Primero debes llenar los campos", Toast.LENGTH_SHORT).show();
 
-            et_fecha.requestFocus();
+            /*et_fecha.requestFocus();
             InputMethodManager imm = (InputMethodManager)getSystemService(this.INPUT_METHOD_SERVICE);
-            imm.showSoftInput(et_fecha, InputMethodManager.SHOW_IMPLICIT);
+            imm.showSoftInput(et_fecha, InputMethodManager.SHOW_IMPLICIT);*/
 
         }
     }

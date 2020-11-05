@@ -13,13 +13,13 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase BD) {
-        BD.execSQL("create table puntaje(identificacion int, nombre text, telefono int)");
+    public void onCreate(SQLiteDatabase BaseDeDatos) {
+        BaseDeDatos.execSQL("create table reserva(fecha int, hora int)");
 
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
 }
