@@ -16,7 +16,7 @@ public class MainActivity2_Menu extends AppCompatActivity {
 
     //Pasar a la siguiente pantalla, Estado de cuenta
     public void Estado(View view){
-        Intent estado = new Intent(this, MainActivity_Estadodecuenta.class);
+        Intent estado = new Intent(this, MainActivity_EstadoDeCuenta.class);
         startActivity(estado);
     }
 

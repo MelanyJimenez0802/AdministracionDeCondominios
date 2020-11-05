@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import static android.graphics.Color.parseColor;
 
-public class MainActivity_Estadodecuenta extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity_EstadoDeCuenta extends AppCompatActivity implements View.OnClickListener {
 
     private EditText txt_FI, txt_FF;
     private TableLayout tableLayout;
@@ -55,18 +55,18 @@ public class MainActivity_Estadodecuenta extends AppCompatActivity implements Vi
 
     }
 
-    public void llenarTabla(){
-        if(tableLayout.getChildCount()>1){
-            Log.i("fslog","nrows=" + tableLayout.getChildCount());
+    public void llenarTabla() {
+        if (tableLayout.getChildCount() > 1) {
+            Log.i("fslog", "nrows=" + tableLayout.getChildCount());
 
             //Una bandera para identificar si ya hay una tabla y si hay borrarla primero antes de llenar los datos
             int filas = tableLayout.getChildCount();
 
-            tableLayout.removeViews(1, filas -1);
-            for (int i=0; i<matriz1.length; i++) {
+            tableLayout.removeViews(1, filas - 1);
+            for (int i = 0; i < matriz1.length; i++) {
                 Log.i("fslog", "matriz1[i].length = " + matriz1[i].length);
                 TableRow fila = new TableRow(this);
-                fila.setPadding(0,0,0,10);
+                fila.setPadding(0, 0, 0, 10);
                 Log.i("fslog", "matriz1.length=" + matriz1.length);
                 TextView tv1 = new TextView(this);
                 TextView tv2 = new TextView(this);
@@ -81,30 +81,31 @@ public class MainActivity_Estadodecuenta extends AppCompatActivity implements Vi
                 fila.addView(tv3);
                 tableLayout.addView(fila);
                 Log.i("fslog", "fila added=");
-
             }
 
-        }else {
-                for (int i=0; i<matriz1.length; i++) {
-                    Log.i("fslog", "matriz1[i].length = " + matriz1[i].length);
-                    TableRow fila = new TableRow(this);
-                    fila.setPadding(0,0,0,10);
-                    Log.i("fslog", "matriz1.length=" + matriz1.length);
-                    TextView tv1 = new TextView(this);
-                    TextView tv2 = new TextView(this);
-                    TextView tv3 = new TextView(this);
-                    Log.i("fslog", "text=" + matriz1[i][0]);
-                    tv1.setText(matriz1[0][i]);
-                    tv2.setText(matriz1[1][i]);
-                    tv3.setText(matriz1[2][i]);
+        } else {
+            for (int i = 0; i < matriz1.length; i++) {
+                Log.i("fslog", "matriz1[i].length = " + matriz1[i].length);
+                TableRow fila = new TableRow(this);
+                fila.setPadding(0, 0, 0, 10);
+                Log.i("fslog", "matriz1.length=" + matriz1.length);
+                TextView tv1 = new TextView(this);
+                TextView tv2 = new TextView(this);
+                TextView tv3 = new TextView(this);
+                Log.i("fslog", "text=" + matriz1[i][0]);
+                tv1.setText(matriz1[0][i]);
+                tv2.setText(matriz1[1][i]);
+                tv3.setText(matriz1[2][i]);
 
-                    fila.addView(tv1);
-                    fila.addView(tv2);
-                    fila.addView(tv3);
-                    tableLayout.addView(fila);
-                    Log.i("fslog", "fila added=");
-                }
+                fila.addView(tv1);
+                fila.addView(tv2);
+                fila.addView(tv3);
+                tableLayout.addView(fila);
+                Log.i("fslog", "fila added=");
+            }
         }
+
+
     }
 
 

@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity_EstadoDeCuenta"></activity>
         <activity android:name=".MainActivity_ReservasGuardadas" />
         <activity android:name=".MainActivity_CalendarioReserva" />
         <activity android:name=".MainActivity_spinner" />
@@ -72,12 +73,10 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.administracindecondominios.MainActivity2_Menu" />
-        </activity>
-
-        <!--Dialogo -->
-        <activity android:name=".MainActivity_DialogoDetalles"
-            android:theme="@style/Theme.AppCompat.Light.Dialog.Alert"></activity>
-
+        </activity> <!-- Dialogo -->
+        <activity
+            android:name=".MainActivity_DialogoDetalles"
+            android:theme="@style/Theme.AppCompat.Light.Dialog.Alert" />
     </application>
 
 </manifest>
