@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.icu.util.Calendar;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -16,6 +17,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -179,6 +182,17 @@ public class MainActivity_CalendarioReserva extends AppCompatActivity implements
                 et_hora.setText("");
                 List<Reservacion> list =dbHelper.getAll(Reservacion.class);
                 for(Reservacion r:list){
+                    TableRow fila = new TableRow(this);
+                    fila.setPadding(0, 0, 0, 10);
+                    TextView tv1 = new TextView(this);
+                    TextView tv2 = new TextView(this);
+                    tv1.setText(r.getUserId());
+                    tv2.setText(r.getFechaHora());
+
+                    fila.addView(tv1);
+                    fila.addView(tv2);
+                    tableLayout.addView(fila);
+                    Log.i("fslog", "fila added=");
                     Toast.makeText(this, r.getUserId()+" "+r.getFechaHora(), Toast.LENGTH_SHORT).show();
                 }
 
