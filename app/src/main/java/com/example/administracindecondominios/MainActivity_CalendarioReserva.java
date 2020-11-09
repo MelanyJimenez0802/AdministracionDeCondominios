@@ -1,42 +1,32 @@
 package com.example.administracindecondominios;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.icu.util.Calendar;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.example.administracindecondominios.database.DBHelper;
+import com.example.administracindecondominios.database.dao.Reservacion;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class MainActivity_CalendarioReserva extends AppCompatActivity implements View.OnClickListener {
@@ -54,7 +44,7 @@ public class MainActivity_CalendarioReserva extends AppCompatActivity implements
     private List<String> lista1 = new ArrayList<>();
     private ArrayAdapter<String> adapter1;
 
-
+    private DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +84,7 @@ public class MainActivity_CalendarioReserva extends AppCompatActivity implements
             }
 
         }
-
+        dbHelper = new DBHelper(this);
 
     }
 
@@ -172,22 +162,31 @@ public class MainActivity_CalendarioReserva extends AppCompatActivity implements
 
     //Probar para guardar en Base de Datos
     public void Reservar(View view){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 1);
-        SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
-
         String s3 = et_fecha.getText().toString();
         String s4 = et_hora.getText().toString();
 
-        if(!s3.isEmpty() | !s4.isEmpty()){
-            ContentValues registro = new ContentValues();
-            registro.put("fecha", s3);
-            registro.put("hora", s4);
 
-            BaseDeDatos.insert("reserva", null, registro);
-            BaseDeDatos.close();
-            et_fecha.setText("");
-            et_hora.setText("");
-            Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show();
+        if(!s3.isEmpty() | !s4.isEmpty()){
+
+            Reservacion reservacion = new Reservacion();
+            reservacion.setUserId("user@domain.com");
+            reservacion.setFechaHora(s3+" "+s4);
+
+            try {
+                //dbHelper.createOrUpdate(student);
+                dbHelper.createOrUpdate(reservacion);
+                et_fecha.setText("");
+                et_hora.setText("");
+                List<Reservacion> list =dbHelper.getAll(Reservacion.class);
+                for(Reservacion r:list){
+                    Toast.makeText(this, r.getUserId()+" "+r.getFechaHora(), Toast.LENGTH_SHORT).show();
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }
+
 
            /* switch (view.getId()) {
                 //Obtener los campos de texto
