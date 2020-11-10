@@ -65,6 +65,7 @@ public class MainActivity_CalendarioReserva extends AppCompatActivity implements
         btn_fecha.setOnClickListener(this);
         btn_hora.setOnClickListener(this);
 
+
         tableLayout.setVisibility(tableLayout.INVISIBLE);
 
 

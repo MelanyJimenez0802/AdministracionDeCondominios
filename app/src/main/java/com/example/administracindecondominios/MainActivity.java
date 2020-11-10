@@ -32,6 +32,7 @@ import com.facebook.login.widget.LoginButton;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -137,19 +138,18 @@ public class MainActivity extends MainActivity_spinner {
                     List<Usuario> list = dbHelper2.getAll(Usuario.class);
 
 
-                } catch (JSONException e) {
+                } catch (JSONException | SQLException e) {
                 }
 
             }
 
-        }
-    });
+        });
 
-    Bundle parameters = new Bundle ();
+        Bundle parameters = new Bundle ();
         parameters.putString("fields", "first_name, last_name, email, id");
         request.setParameters(parameters);
         request.executeAsync();
-
+    }
 
     //Pasar del botón aceptar a la siguiente pantalla
     public void botonPrueba(View view){
@@ -157,8 +157,6 @@ public class MainActivity extends MainActivity_spinner {
         startActivity(siguiente);
 
     }
-
-
 }
 
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.administracindecondominios.database.dao.Reservacion;
+import com.example.administracindecondominios.database.dao.Usuario;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
@@ -35,6 +36,7 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
 
             // Create Table with given table name with columnName
             TableUtils.createTable(cs, Reservacion.class);
+            TableUtils.createTable(cs, Usuario.class);
 
             System.out.println("hola");
 
