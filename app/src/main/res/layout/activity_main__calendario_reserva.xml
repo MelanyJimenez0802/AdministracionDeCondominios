@@ -95,10 +95,10 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="3dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="400dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginEnd="3dp"
         android:stretchColumns="*"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
@@ -118,7 +118,7 @@
                 android:background="#411B85"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="@string/txt_fecha"
+                android:text="@string/txt_usuario"
                 android:textColor="#ffffff" />
 
             <TextView
@@ -129,7 +129,7 @@
                 android:background="#411B85"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="@string/txt_hora"
+                android:text="@string/txt_fechayhora"
                 android:textColor="#ffffff" />
 
         </TableRow>

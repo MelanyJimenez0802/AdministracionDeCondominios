@@ -6,14 +6,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.ViewTarget;
+import com.example.administracindecondominios.database.DBHelper;
+import com.example.administracindecondominios.database.dao.Reservacion;
 import com.example.administracindecondominios.restclient.APIInterface;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
@@ -29,16 +33,22 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.administracindecondominios.database.DBHelper;
+import com.example.administracindecondominios.database.dao.Usuario;
+
+public class MainActivity extends MainActivity_spinner {
 
     private LoginButton loginButton;
     private CircleImageView circleImageView;
     private TextView txtName, txtEmail;
     private CallbackManager callbackManager;
     private APIInterface apiInterface;
+
+    private DBHelper dbHelper2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                
+
                 Intent siguiente = new Intent(getApplicationContext(), MainActivity_spinner.class); //Pasar a la sigueinte activity
                 startActivity(siguiente);
             }
@@ -96,41 +106,50 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private void loadUserProfile(AccessToken newAccessToken)
-    {
+    private void loadUserProfile(AccessToken newAccessToken) {
         GraphRequest request = GraphRequest.newMeRequest(newAccessToken, new GraphRequest.GraphJSONObjectCallback() {
             @Override
-            public void onCompleted(JSONObject object, GraphResponse response)
-            {
+            public void onCompleted(JSONObject object, GraphResponse response) {
+
                 try {
                     String first_name = object.getString("firts_name");
                     String last_name = object.getString("last_name");
                     String email = object.getString("email");
                     String id = object.getString("id");
 
-                    String image_url = "https://graph.facebook.com/"+id+"picture?type=normal";
+                    String image_url = "https://graph.facebook.com/" + id + "picture?type=normal";
+
+                    Usuario usuario = new Usuario();
+                    usuario.setEmail(email);
+                    usuario.setNombre(first_name+" "+last_name);
+
 
                     txtEmail.setText(email);
-                    txtName.setText(first_name +""+last_name);
+                    txtName.setText(first_name + "" + last_name);
                     RequestOptions requestOptions = new RequestOptions();
                     requestOptions.dontAnimate();
 
                     Glide.with(MainActivity.this).load(image_url).into(circleImageView);
 
+                    dbHelper2.createOrUpdate(usuario);
+                    txtEmail.setText(email);
+                    txtName.setText(first_name + "" + last_name);
+                    List<Usuario> list = dbHelper2.getAll(Usuario.class);
 
 
-                } catch (JSONException e){
-
+                } catch (JSONException e) {
                 }
 
             }
-        });
 
-        Bundle parameters = new Bundle ();
+        }
+    });
+
+    Bundle parameters = new Bundle ();
         parameters.putString("fields", "first_name, last_name, email, id");
         request.setParameters(parameters);
         request.executeAsync();
-    }
+
 
     //Pasar del botón aceptar a la siguiente pantalla
     public void botonPrueba(View view){
@@ -138,4 +157,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(siguiente);
 
     }
+
+
 }
+
+

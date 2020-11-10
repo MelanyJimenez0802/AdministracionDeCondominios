@@ -30,4 +30,7 @@
     <string name="descripcion">Descripcion</string>
     <string name="monto">Monto</string>
 
+    <string name="txt_fechayhora">Fecha / Hora</string>
+    <string name="txt_usuario">Usuario</string>
+
 </resources>

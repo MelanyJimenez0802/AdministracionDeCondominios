@@ -65,6 +65,8 @@ public class MainActivity_CalendarioReserva extends AppCompatActivity implements
         btn_fecha.setOnClickListener(this);
         btn_hora.setOnClickListener(this);
 
+        tableLayout.setVisibility(tableLayout.INVISIBLE);
+
 
         
         init();
@@ -99,25 +101,12 @@ public class MainActivity_CalendarioReserva extends AppCompatActivity implements
         et_hora = (EditText)findViewById(R.id.editTextTime);
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu,menu);
         return true;
-    }
-
-   /* @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if(id == R.id.reserva){
-            if(preferencias.getString("reserva", "").equals("")){
-                Toast.makeText(getApplicationContext(), "No hay nada guardado", Toast.LENGTH_SHORT).show();
-            }else {
-                Intent intent = new Intent(MainActivity_CalendarioReserva.this, MainActivity_ReservasGuardadas.class);
-                startActivity(intent);
-            }
-        }
-        return super.onOptionsItemSelected(item);
     }*/
+
 
     @Override
     public void onClick(View view) {
@@ -132,12 +121,9 @@ public class MainActivity_CalendarioReserva extends AppCompatActivity implements
                 @Override
                 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                     et_fecha.setText(dayOfMonth + " / " + (monthOfYear+1) + " / " + year);
-
                 }
             }
-
             ,ano,mes,dia);
-
 
             datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
 
@@ -201,63 +187,11 @@ public class MainActivity_CalendarioReserva extends AppCompatActivity implements
                 throw new RuntimeException(e);
             }
 
+            tableLayout.setVisibility(tableLayout.VISIBLE);
 
-           /* switch (view.getId()) {
-                //Obtener los campos de texto
-                case R.id.button_reserva:
-                    String texto = et_fecha.getText().toString().trim() + et_hora.getText().toString().trim();
-                    lista1.add(texto);
-
-                    //Para que se borren los datos
-                    et_fecha.getText().clear();
-                    et_hora.getText().clear();
-
-                    TableRow fila = new TableRow(this);
-                    fila.setPadding(0,0,0,10);
-                    Log.i("fslog", "reserva.length=" + reserva);
-                    TextView tv1 = new TextView(this);
-                    TextView tv2 = new TextView(this);
-                    TextView tv3 = new TextView(this);
-                    Log.i("fslog", "text=" + reserva);
-                    tv1.setText();
-
-
-                    //Agregar a la lista
-                    adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lista1); //Agregar a la lista
-                    reserva.setAdapter(adapter1);
-
-
-
-            }*/
-
-
-
-            /*try {
-                if(!preferencias.getString("reservar", "").equals(""))
-                    reserva = new JSONObject(preferencias.getString("reserva", ""));
-                reserva.put("reservar"+reserva.length(),s3);
-                reserva.put("reservar"+reserva.length(),s4);
-            }catch (JSONException e){
-                e.printStackTrace();
-            }
-
-            Log.d("testing", reserva+"");
-            editor.putString("reserva",reserva.toString());
-            editor.apply();
-            et_fecha.setText("");
-            et_hora.setText("");
-
-            Toast.makeText(this, "La reservación ha sido exitosa", Toast.LENGTH_SHORT).show();
-
-            Intent intent = new Intent(MainActivity_CalendarioReserva.this, MainActivity_ReservasGuardadas.class);
-            startActivity(intent);*/
 
         }else {
             Toast.makeText(this, "Primero debes llenar los campos", Toast.LENGTH_SHORT).show();
-
-            /*et_fecha.requestFocus();
-            InputMethodManager imm = (InputMethodManager)getSystemService(this.INPUT_METHOD_SERVICE);
-            imm.showSoftInput(et_fecha, InputMethodManager.SHOW_IMPLICIT);*/
 
         }
     }
