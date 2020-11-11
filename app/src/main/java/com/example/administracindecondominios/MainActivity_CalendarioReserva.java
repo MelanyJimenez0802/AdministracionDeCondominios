@@ -68,7 +68,6 @@ public class MainActivity_CalendarioReserva extends AppCompatActivity implements
 
         tableLayout.setVisibility(tableLayout.INVISIBLE);
 
-
         
         init();
         Intent intent =getIntent();
