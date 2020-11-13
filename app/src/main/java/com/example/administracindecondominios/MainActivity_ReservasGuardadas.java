@@ -30,6 +30,7 @@ public class MainActivity_ReservasGuardadas extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main__reservas_guardadas);
+        setTitle("Reservas Guardadas ");
 
         recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
 

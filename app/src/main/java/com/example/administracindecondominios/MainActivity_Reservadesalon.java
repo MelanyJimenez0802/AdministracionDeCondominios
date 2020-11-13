@@ -19,6 +19,7 @@ public class MainActivity_Reservadesalon extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main__reservadesalon);
+        setTitle("Reservar Salón");
 
         spinner1 = (Spinner) findViewById(R.id.spinner2);
 
@@ -31,7 +32,13 @@ public class MainActivity_Reservadesalon extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                if(parent.getItemAtPosition(position).equals("Salón BBQ")){
+                if (parent.getItemAtPosition(position).equals("Salón BBQ")) {
+                    int check =0;
+                    if(++check > 1) {
+                        TextView textView = (TextView) findViewById(R.id.txt_seleccion);
+                        String str = (String) parent.getItemAtPosition(position);
+                        textView.setText(str);
+                    }
                     Intent aceptar = new Intent(MainActivity_Reservadesalon.this, MainActivity_CalendarioReserva.class);
                     startActivity(aceptar);
 

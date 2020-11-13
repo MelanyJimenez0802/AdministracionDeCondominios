@@ -31,6 +31,7 @@ public class MainActivity_Configuracion extends AppCompatActivity implements Vie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main__configuracion);
+        setTitle("Configuración");
 
         btn_insertar1 = (Button)findViewById(R.id.btn_insertar);
         et_identificacion1 = (EditText)findViewById(R.id.et_Identificacion);

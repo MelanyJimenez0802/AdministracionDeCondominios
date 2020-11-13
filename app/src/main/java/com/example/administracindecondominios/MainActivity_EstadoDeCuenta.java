@@ -34,6 +34,7 @@ public class MainActivity_EstadoDeCuenta extends AppCompatActivity implements Vi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main__estadodecuenta);
+        setTitle("Estado de Cuenta");
 
         txt_FI =(EditText)findViewById(R.id.txt_fechaInicial);
         txt_FF = (EditText)findViewById(R.id.txt_fechaFinal);

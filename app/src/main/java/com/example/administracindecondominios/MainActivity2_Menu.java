@@ -12,6 +12,7 @@ public class MainActivity2_Menu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity2__menu);
+        setTitle("Menú");
     }
 
     //Pasar a la siguiente pantalla, Estado de cuenta

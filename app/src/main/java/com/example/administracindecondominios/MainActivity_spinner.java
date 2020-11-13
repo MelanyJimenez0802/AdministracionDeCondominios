@@ -36,6 +36,8 @@ public class MainActivity_spinner extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_spinner);
+        setTitle("Condominios");
+
         //apiInterface = APIClient.getClient().create(APIInterface.class);
         ArrayList<String> opciones = new ArrayList<String>();
 

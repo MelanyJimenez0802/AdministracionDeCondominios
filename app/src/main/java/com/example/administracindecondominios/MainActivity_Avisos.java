@@ -21,6 +21,7 @@ public class MainActivity_Avisos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main__avisos);
+        setTitle("Avisos");
 
         lv1 = (ListView)findViewById(R.id.lv);
 

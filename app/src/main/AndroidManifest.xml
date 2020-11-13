@@ -12,11 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity_EstadoDeCuenta" />
         <activity android:name=".MainActivity_ReservasGuardadas" />
-        <activity android:name=".MainActivity_CalendarioReserva" />
-        <activity android:name=".MainActivity_spinner" />
-        <activity android:name=".MainActivity2_Menu" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,7 +50,7 @@
                 android:value="com.example.administracindecondominios.MainActivity2_Menu" />
         </activity> <!-- //Poner la linea de navegación para devolverse al menú -->
         <activity
-            android:name=".MainActivity_Estadodecuenta"
+            android:name=".MainActivity_EstadoDeCuenta"
             android:parentActivityName=".MainActivity2_Menu">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -73,7 +69,30 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.administracindecondominios.MainActivity2_Menu" />
-        </activity> <!-- Dialogo -->
+        </activity> <!-- //Poner la linea de navegación para devolverse al -->
+        <activity
+            android:name=".MainActivity_spinner"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.administracindecondominios.MainActivity" />
+        </activity> <!-- //Poner la linea de navegación para devolverse al -->
+        <activity
+            android:name=".MainActivity2_Menu"
+            android:parentActivityName=".MainActivity_spinner">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.administracindecondominios.MainActivity_spinner" />
+        </activity> <!-- //Poner la linea de navegación para devolverse al -->
+        <activity
+            android:name=".MainActivity_CalendarioReserva"
+            android:parentActivityName=".MainActivity_Reservadesalon">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.administracindecondominios.MainActivity_Reservadesalon" />
+        </activity> <!-- //Poner la linea de navegación para devolverse al -->
+
+
         <activity
             android:name=".MainActivity_DialogoDetalles"
             android:theme="@style/Theme.AppCompat.Light.Dialog.Alert" />

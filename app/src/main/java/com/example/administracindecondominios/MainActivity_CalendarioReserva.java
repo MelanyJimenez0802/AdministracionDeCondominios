@@ -53,6 +53,7 @@ public class MainActivity_CalendarioReserva extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main__calendario_reserva);
+            setTitle("Calendario de Reserva");
 
 
         btn_fecha = (Button)findViewById(R.id.button_fecha);
